@@ -1,12 +1,17 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
+
+# Provides basic authentication functionality for testing parts of your engine
+gem 'spree_auth_devise', :github => "spree/spree_auth_devise", :branch => '2-0-stable'
+
 gemspec
 
 group :test do
-  if RUBY_PLATFORM.downcase.include? "darwin"
-    gem 'guard-rspec'
-    gem 'rb-fsevent'
-    gem 'growl'
-  end
+  gem "shoulda-matchers"
 end
 
-gem 'spree', '~> 1.3.2'
+# `rspec-rails` needs to be in the development group so that Rails generators work.
+group :development, :test do
+  gem "rspec-rails", "~> 2.12"
+end
+
+gem 'therubyracer'

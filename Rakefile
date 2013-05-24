@@ -1,31 +1,17 @@
-require 'rake'
-require 'rake/testtask'
-require 'rake/packagetask'
-require 'rubygems/package_task'
+require 'bundler'
+Bundler::GemHelper.install_tasks
+
 require 'rspec/core/rake_task'
-require 'spree/core/testing_support/common_rake'
+require 'spree/testing_support/extension_rake'
 
 RSpec::Core::RakeTask.new
 
 task :default => [:spec]
 
-spec = eval(File.read('spree_digital.gemspec'))
-
-Gem::PackageTask.new(spec) do |p|
-  p.gem_spec = spec
-end
-
-desc "Release to gemcutter"
-task :release => :package do
-  require 'rake/gemcutter'
-  Rake::Gemcutter::Tasks.new(spec).define
-  Rake::Task['gem:push'].invoke
-end
-
-desc "Regenerates a rails 3 app for testing"
+desc 'Generates a dummy app for testing'
 task :test_app do
-  ENV['LIB_NAME'] = 'spree_digital'  
-  
+  ENV['LIB_NAME'] = 'spree_digital'
+
   require File.join `bundle show spree_core`.chomp, 'lib/generators/spree/dummy/dummy_generator.rb'
   Spree::DummyGenerator.class_eval do
     def test_dummy_add_digital
@@ -35,5 +21,5 @@ task :test_app do
     end
   end
 
-  Rake::Task['common:test_app'].invoke
+  Rake::Task['extension:test_app'].invoke
 end

@@ -25,7 +25,7 @@ The idea is simple. You attach a file to a Product (or a Variant of this Product
 Add this line to your gemfile:
 
 ```shell
-gem 'spree_digital', :git => 'git://github.com/halo/spree_digital.git', :branch => 'master'
+gem 'spree_digital', :git => 'git://github.com/dlage/spree_digital.git', :branch => 'master'
 ```
 
 The following terminal commands will copy the migration files to the corresponding directory in your Rails application and apply the migrations to your database.
@@ -106,7 +106,7 @@ Get the spree framework and spree_digital extension for it:
 
 ```shell
 git clone git://github.com/spree/spree.git
-git clone git://github.com/halo/spree_digital.git
+git clone git://github.com/dlage/spree_digital.git
 ```
 
 Go into the spree directory and run the bundle command:
@@ -138,6 +138,7 @@ This link may be very helpful to you: [http://github.com/spree/spree](http://git
 
 * [iloveitaly](http://github.com/iloveitaly/)
 * [halo](http://github.com/halo)
+* [dlage](http://github.com/dlage)
 
 ### License
 
