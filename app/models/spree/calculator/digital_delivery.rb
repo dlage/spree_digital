@@ -4,7 +4,7 @@ require_dependency 'spree/calculator'
 module Spree
   class Calculator::DigitalDelivery < Calculator::FlatRate
     def self.description
-      I18n.t(:digital_delivery)
+      Spree.t(:digital_delivery)
     end
 
     def compute(object=nil)

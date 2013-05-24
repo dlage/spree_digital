@@ -18,7 +18,7 @@ FactoryGirl.define do
   end
 
   factory :digital_shipping_calculator, class: Spree::Calculator::DigitalDelivery do |c|
-    after_create { |c| c.set_preference(:amount, 0) }
+    after(:create) { |c| c.set_preference(:amount, 0) }
   end
 
   factory :digital_shipping_method, parent: :shipping_method do |f|
