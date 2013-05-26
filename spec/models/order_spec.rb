@@ -64,10 +64,10 @@ describe Spree::Order do
 
     it "should only offer digital shipping if all items are digital" do
       order.digital?.should be_true
-      order.create_proposed_shipments
-      order.shipping_rates.count.should == 1
-      order.shipping_rates.first.shipping_method.calculator.class.should == Spree::Calculator::DigitalDelivery
-      order.shipping_rates.first.cost.should == 0.0
+      shipments = order.create_proposed_shipments
+      shipments.count.should == 1
+      shipments.first.shipping_method.calculator.class.should == Spree::Calculator::DigitalDelivery
+      shipments.first.cost.should == 0.0
     end
 
     it "should not offer digital shipping if only some items are digital" do
